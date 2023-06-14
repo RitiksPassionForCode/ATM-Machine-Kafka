@@ -21,18 +21,18 @@ public class AtmController {
 	@Autowired
 	private WithdrawalService withdrawalService;
 	
-	@PostMapping("/deposit")
-	public void deposit(@Valid DepositReq req) {
-		depositService.deposit(req);
-	}
-	
-	@PostMapping("/withdrawal")
-	public void withdraw(@Valid WithdrawReq req) {
-		withdrawalService.withdraw(req);
-	}
-	
-	@GetMapping("/getBalance/{id}")
-	public void getUser(@Valid int id) {
-		withdrawalService.getBalance(id);
-	}
+//	@PostMapping("/deposit")
+//	public void deposit(@Valid DepositReq req) {
+//		depositService.deposit(req);
+//	}
+//	
+//	@PostMapping("/withdrawal")
+//	public void withdraw(@Valid WithdrawReq req) {
+//		withdrawalService.withdraw(req);
+//	}
+//	
+//	@GetMapping("/getBalance/{id}")
+//	public void getUser(@Valid int id) {
+//		withdrawalService.getBalance(id);
+//	}
 }

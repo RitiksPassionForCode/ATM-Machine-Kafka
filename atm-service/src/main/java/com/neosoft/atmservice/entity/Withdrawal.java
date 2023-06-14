@@ -1,5 +1,7 @@
 package com.neosoft.atmservice.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,5 +16,9 @@ public class Withdrawal {
 	private int id;
 	
 	@Column
-	private int balance;
+	private int withdrawAmount;
+	
+	@Column
+	private Date date;
+	
 }

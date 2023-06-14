@@ -2,8 +2,10 @@ package com.neosoft.atmservice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
@@ -14,13 +16,12 @@ public class User {
 
 	@Column
 	private String username;
-
-	@Column
-	private String bankName;
-
-	@Column 
-	private int accountNo;
 	
 	@Column
 	private int balance;
+	
+	@Column
+	@ManyToOne(fetch = FetchType.LAZY)
+	private volatile int accountNo;
+
 }
