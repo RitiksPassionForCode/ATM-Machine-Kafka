@@ -2,8 +2,10 @@ package com.neosoft.atmservice.service;
 
 import org.springframework.stereotype.Service;
 
+import com.neosoft.atmservice.req.WithdrawReq;
+
 @Service
 public interface WithdrawalService {
 
-	public int withdraw();
+	public void withdraw(WithdrawReq req);
 }

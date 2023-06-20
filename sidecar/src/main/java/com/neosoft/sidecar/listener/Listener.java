@@ -10,7 +10,7 @@ import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
 import org.springframework.kafka.support.serializer.JsonSerde;
 
-import com.neosoft.sidecar.dto.Account;
+import com.neosoft.sidecar.helper.Account;
 
 public class Listener {
 

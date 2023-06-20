@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class Withdrawal {
 
 
@@ -17,6 +20,9 @@ public class Withdrawal {
 	
 	@Column
 	private int withdrawAmount;
+	
+	@Column
+	private String accountNo;
 	
 	@Column
 	private Date date;
