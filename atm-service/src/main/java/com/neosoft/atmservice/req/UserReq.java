@@ -11,7 +11,5 @@ public class UserReq {
 
 	private String userName;
 	
-	private String bankName;
-	
 	private int accountNo;
 }

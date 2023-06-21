@@ -50,7 +50,7 @@ public class AccountService {
 		KafkaProducer<String, Object> producer = new KafkaProducer<>(producerConfig);
 
 		MoneyWithdrawnEvent moneyWithdrawnEvent = new MoneyWithdrawnEvent(accountNo, amount);
-		producer.send(new ProducerRecord<>("account-events", moneyWithdrawnEvent.getAccountId(), moneyWithdrawnEvent));
+		producer.send(new ProducerRecord<>("account-events", moneyWithdrawnEvent.getAccountNo(), moneyWithdrawnEvent));
 	}
 
 }

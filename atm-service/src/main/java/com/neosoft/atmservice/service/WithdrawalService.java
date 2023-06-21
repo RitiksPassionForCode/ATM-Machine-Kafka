@@ -8,4 +8,5 @@ import com.neosoft.atmservice.req.WithdrawReq;
 public interface WithdrawalService {
 
 	public void withdraw(WithdrawReq req);
+	
 }

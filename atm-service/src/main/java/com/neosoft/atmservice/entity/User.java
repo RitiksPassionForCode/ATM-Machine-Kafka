@@ -26,7 +26,7 @@ public class User {
 	private int balance;
 	
 	@Column
-	@ManyToOne(fetch = FetchType.LAZY)
+//	@ManyToOne(fetch = FetchType.LAZY)
 	private volatile String accountNo;
 	
 	@Column

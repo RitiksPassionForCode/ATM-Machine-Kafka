@@ -9,6 +9,9 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/client")
 public class ZuulLoginFilter extends ZuulFilter  {
@@ -32,9 +35,9 @@ public class ZuulLoginFilter extends ZuulFilter  {
 
     @Override
     public Object run() throws ZuulException {
-        logger.info("Request is filtered");
+        log.info("Request is filtered");
         HttpServletRequest httpServletRequest = RequestContext.getCurrentContext().getRequest();
-        logger.info("request -> {} request uri -> {} ", httpServletRequest, httpServletRequest.getRequestURI());
+        log.info("request -> {} request uri -> {} ", httpServletRequest, httpServletRequest.getRequestURI());
         return null;
     }
 }

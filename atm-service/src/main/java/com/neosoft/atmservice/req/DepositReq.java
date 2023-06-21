@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class DepositReq {
 
 	private int depositAmount;
+	
+	private String accountNo;
 }

@@ -53,4 +53,9 @@ public class MbankController {
 		userService.deleteAllUsers();
 	}
 	
+	@GetMapping("/getBalance/{accountNo}")
+	public int getBalance(@Valid int accountNo) {
+		return userService.getBalance(accountNo);
+	}
+	
 }

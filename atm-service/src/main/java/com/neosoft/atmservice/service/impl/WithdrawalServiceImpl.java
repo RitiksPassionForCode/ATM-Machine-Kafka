@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neosoft.atmservice.dto.Account;
+import com.neosoft.atmservice.entity.User;
 import com.neosoft.atmservice.entity.Withdrawal;
 import com.neosoft.atmservice.processor.AccountService;
 import com.neosoft.atmservice.repository.WithdrawalRepository;
@@ -35,5 +36,4 @@ public class WithdrawalServiceImpl implements WithdrawalService {
 		accountService.kafkaAmountWithdranProducer(withdrawal.getAccountNo(), withdrawal.getWithdrawAmount());
 	}
 	
-
 }

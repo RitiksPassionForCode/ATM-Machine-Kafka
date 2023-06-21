@@ -22,5 +22,7 @@ public interface UserService {
 	User updateUser(User user, Long id);
 
 	void deleteAllUsers();
+	
+	int getBalance(int accountNo);
 
 }

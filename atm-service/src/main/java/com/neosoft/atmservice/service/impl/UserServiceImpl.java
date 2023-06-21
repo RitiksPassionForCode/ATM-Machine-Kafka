@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 		ModelMapper modelMapper = new ModelMapper();
 		User user = modelMapper.map(req, User.class);
 		userRepository.save(user);
-		accountService.kafkaUserCreatedProducer(user.getAccountNo(), user.getId(), user.getBalance());
+		accountService.kafkaUserCreatedProducer(user.getAccountNo(), user.getId(), 0);
 	}
 	
 	@Override
@@ -60,4 +60,9 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteAll();
 	}
 
+	@Override
+	public int getBalance(int accountNo) {
+		User user = userRepository.getByAccountNo(accountNo);
+		return user.getBalance();
+	}
 }

@@ -10,6 +10,7 @@ import com.neosoft.atmservice.processor.AccountService;
 import com.neosoft.atmservice.repository.DepositRepository;
 import com.neosoft.atmservice.req.DepositReq;
 import com.neosoft.atmservice.service.DepositService;
+import com.neosoft.atmservice.service.UserService;
 
 @Service
 public class DepositServiceImpl implements DepositService {
@@ -18,16 +19,17 @@ public class DepositServiceImpl implements DepositService {
 	private DepositRepository depositRepository;
 	
 	@Autowired
-	private Account account;
+	private AccountService accountService;
 	
 	@Autowired
-	private AccountService accountService;
+	private UserService userService;
 
 	@Override
-	public void deposit(DepositReq req) {		
+	public void deposit(DepositReq req) {	
 		ModelMapper modelMapper = new ModelMapper();
 		Deposit deposit = modelMapper.map(req, Deposit.class);
 		depositRepository.save(deposit);
+		Account account = new Account(deposit.getAccountNo(), userService.getBalance(Integer.valueOf(deposit.getAccountNo())));
 		account.deposit(deposit.getDepositAmount());
 		accountService.kafkaAmountDepositProducer(deposit.getAccountNo(), deposit.getDepositAmount());
 	}
