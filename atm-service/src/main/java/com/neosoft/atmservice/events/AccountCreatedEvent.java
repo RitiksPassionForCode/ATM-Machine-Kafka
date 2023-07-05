@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class AccountCreatedEvent {
 
 	private String accountId;
-    private int userId;
+    private Long userId;
     private int initialBalance;
 
 }

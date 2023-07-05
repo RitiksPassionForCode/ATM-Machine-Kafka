@@ -11,8 +11,10 @@ public class WithdrawReq {
 
 	int widthrawAmount;
 	
-	int balance;
+//	int balance;
+//	
+//	int withdrawLimit;
 	
-	int withdrawLimit;
+	private String accountNo;
 	
 }

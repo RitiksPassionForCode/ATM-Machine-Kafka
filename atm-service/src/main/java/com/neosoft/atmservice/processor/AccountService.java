@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ser.std.StringSerializer;
@@ -12,9 +13,10 @@ import com.neosoft.atmservice.events.AccountCreatedEvent;
 import com.neosoft.atmservice.events.MoneyDepositedEvent;
 import com.neosoft.atmservice.events.MoneyWithdrawnEvent;
 
+@Component
 public class AccountService {
 
-	public void kafkaUserCreatedProducer(String accountNo, int userId, int initialBalance) {
+	public void kafkaUserCreatedProducer(String accountNo, Long userId, int initialBalance) {
 
 		Properties producerConfig = new Properties();
 		producerConfig.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");

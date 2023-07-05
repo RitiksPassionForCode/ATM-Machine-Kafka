@@ -16,7 +16,7 @@ public class Withdrawal {
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	@Column
 	private int withdrawAmount;

@@ -7,6 +7,6 @@ import com.neosoft.atmservice.req.WithdrawReq;
 @Service
 public interface WithdrawalService {
 
-	public void withdraw(WithdrawReq req);
+	void withdraw(WithdrawReq req);
 	
 }

@@ -17,18 +17,18 @@ public class User {
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 
 	@Column
 	private String userName;
-	
+
 	@Column
 	private int balance;
-	
+
 	@Column
 //	@ManyToOne(fetch = FetchType.LAZY)
-	private volatile String accountNo;
-	
+	private String accountNumber;
+
 	@Column
 	private Date date;
 

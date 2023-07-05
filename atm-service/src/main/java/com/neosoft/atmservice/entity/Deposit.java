@@ -15,7 +15,7 @@ public class Deposit {
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	@Column
 	private int depositAmount;

@@ -9,6 +9,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
 
 	Account findByAccountNumber(String accountNumber);
 	
-	User getByAccountNo(int accountNo);
+	User getByAccountNumber(int accountNumber);
 
 }

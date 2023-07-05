@@ -7,5 +7,5 @@ import com.neosoft.atmservice.req.DepositReq;
 @Service
 public interface DepositService {
 
-	public void deposit(DepositReq req);
+	void deposit(DepositReq req);
 }
