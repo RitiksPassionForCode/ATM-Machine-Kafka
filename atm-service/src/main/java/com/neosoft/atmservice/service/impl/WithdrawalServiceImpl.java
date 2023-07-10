@@ -34,7 +34,7 @@ public class WithdrawalServiceImpl implements WithdrawalService {
 		Withdrawal withdrawal = modelMapper.map(req, Withdrawal.class);
 		withdarawalRepository.save(withdrawal);
 		Account account = new Account(withdrawal.getAccountNo(),
-				userService.getBalance(Integer.valueOf(withdrawal.getAccountNo())));
+				userService.getBalance(withdrawal.getAccountNo()));
 		account.withdraw(withdrawal.getWithdrawAmount());
 		accountService.kafkaAmountWithdranProducer(withdrawal.getAccountNo(), withdrawal.getWithdrawAmount());
 		} catch (Exception e) {

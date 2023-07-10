@@ -1,10 +1,10 @@
 package com.neosoft.atmservice.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.neosoft.atmservice.dto.UserDTO;
 import com.neosoft.atmservice.entity.User;
 import com.neosoft.atmservice.req.UserReq;
 
@@ -13,16 +13,17 @@ public interface UserService {
 
 	void addUser(UserReq req);
 
-	Optional<User> getUser(Long id);
+	User getUser(Long id);
 
-	void deleteUser(Long id);
+	void deleteUser(String acccountNo);
 
 	List<User> getAllUsers();
 
-	User updateUser(User user, Long id);
+	void updateUser(UserDTO userDTO, String accountNumber);
 
 	void deleteAllUsers();
 	
-	int getBalance(int accountNo);
+	int getBalance(String accountNo);
+
 
 }

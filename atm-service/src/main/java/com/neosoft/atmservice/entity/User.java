@@ -1,13 +1,11 @@
 package com.neosoft.atmservice.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -29,7 +27,7 @@ public class User {
 //	@ManyToOne(fetch = FetchType.LAZY)
 	private String accountNumber;
 
-	@Column
-	private Date date;
+	@Column(name="user_registered_date")
+	private LocalDateTime date;
 
 }
