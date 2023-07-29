@@ -33,7 +33,7 @@ public class DepositServiceImpl implements DepositService {
 			ModelMapper modelMapper = new ModelMapper();
 			Deposit deposit = modelMapper.map(req, Deposit.class);
 			depositRepository.save(deposit);
-			Account account = new Account(deposit.getAccountNo(), userService.getBalance(deposit.getAccountNo()));
+			Account account = new Account(String.valueOf(deposit.getAccountNo()), Double.valueOf(userService.getBalance(deposit.getAccountNo())));
 			account.deposit(deposit.getDepositAmount());
 			accountService.kafkaAmountDepositProducer(deposit.getAccountNo(), deposit.getDepositAmount());
 		} catch (Exception e) {

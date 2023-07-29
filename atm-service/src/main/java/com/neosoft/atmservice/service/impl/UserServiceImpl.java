@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 				userRepository.save(user);
 			}
 		} catch (Exception e) {
-			log.error("Failed to add User: {}", req.getUserName());
+			log.error("Failed to add User: {} Cause: {}", req.getUserName(), e.getCause());
 		}
 		accountService.kafkaUserCreatedProducer(user.getAccountNumber(), user.getId(), 0);
 	}
@@ -55,9 +55,9 @@ public class UserServiceImpl implements UserService {
 		User user = new User();
 		try {
 			findById = userRepository.findById(id);
-			user = findById.isPresent() ? findById.get() : Optional.of(user).get();
+			user = findById.isPresent() ? findById.get() : Optional.ofNullable(user).get();
 		} catch (Exception e) {
-			log.error("Failed to get User with Id: {}", id);
+			log.error("Failed to get User with Id: {} Cause: {}", id, e.getCause());
 		}
 		return user;
 	}
@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
 				log.info("User not found for Account Number: {}", accountNo);
 			}
 		} catch (Exception e) {
-			log.error("Failed to delete User with AccountNumber: {}", accountNo);
+			log.error("Failed to delete User with AccountNumber: {} Cause: {}", accountNo, e.getCause());
 		}
 	}
 
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			findAll = userRepository.findAll();
 		} catch (Exception e) {
-			log.error("Failed to get all Users.");
+			log.error("Failed to get all Users. Cause: {}", e.getCause());
 		}
 		return findAll;
 	}
@@ -100,10 +100,11 @@ public class UserServiceImpl implements UserService {
 				userByAccountNo.get().setAccountNumber(userDTO.getAccountNo());
 				userRepository.save(userByAccountNo.get());
 			} else {
-				log.info("User not present with Account Number: {} to update details.", userByAccountNo.get().getAccountNumber());
-			}	
+				log.info("User not present with Account Number: {} to update details.", accountNumber);
+			}
 		} catch (Exception e) {
-			log.error("Failed to update User {}.", userByAccountNo.isPresent() ?  userByAccountNo.get().getUserName(): null);
+			log.error("Failed to update User: {} Cause: {}.",
+					userByAccountNo.isPresent() ? userByAccountNo.get().getUserName() : userByAccountNo, e.getCause());
 		}
 	}
 

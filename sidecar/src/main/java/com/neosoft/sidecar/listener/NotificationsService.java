@@ -2,6 +2,7 @@ package com.neosoft.sidecar.listener;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Properties;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -12,7 +13,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.connect.json.JsonDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.neosoft.atmservice.dto.Account;
+import com.neosoft.atmservice.entity.User;
 import com.neosoft.atmservice.events.MoneyWithdrawnEvent;
 import com.neosoft.atmservice.repository.UserRepository;
 
@@ -56,8 +57,14 @@ public class NotificationsService {
 	}
 
 	private double getCurrentAccountBalance(String accountNo) {
-		Account userAccount = repository.findByAccountNumber(accountNo);
-		return userAccount.getBalance();
+		Optional<User> userAccount = repository.findByAccountNumber(accountNo);
+		double balance = 0.0;
+		if(userAccount.isPresent()) {
+			balance = userAccount.get().getBalance();
+		} else {
+			System.out.println("Failed to get balance for account: " + accountNo);
+		}
+			return balance;
 	}
 	
 	
